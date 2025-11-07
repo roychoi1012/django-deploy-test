@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>첫 배포 축하! 🎉</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f7f6; /* 밝은 배경 */
+            text-align: center;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            border-top: 5px solid #4CAF50; /* 포인트 색상 */
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+        p {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .highlight {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        /* 간단한 애니메이션 효과 */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🚀</div>
+        <h1>배포 성공을 축하합니다!</h1>
+        <p>
+            <span class="highlight">Django 프로젝트의 첫 번째 웹 페이지</span>가 성공적으로 로드되었습니다.<br>
+            개발 여정의 중요한 첫걸음을 내디딘 것을 진심으로 축하드립니다!
+        </p>
+        <p>
+            **"/users/roychoi/Documents/Github/django_learning/mysite"**
+            <br>이 경로에서 멋진 프로젝트가 시작됩니다.
+        </p>
+        <p style="margin-top: 30px; font-size: 0.9em;">
+            이제 <span class="highlight">**main/index.html**</span> 템플릿 파일을 원하는 대로 자유롭게 꾸며나가세요!
+        </p>
+    </div>
+</body>
+</html>
