@@ -26,8 +26,10 @@ SECRET_KEY = "django-insecure-o8*=(wxui%w%zh)4w3@)a*@go+k_4%2(u3^+ms^xhrpv@d(0yq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.ap-northeast-2.compute.amazonaws.com',
-    ".devnote.store",
+ALLOWED_HOSTS = [
+    '.ap-northeast-2.compute.amazonaws.com',
+    'devnote.store',
+    '.devnote.store',
 ]
 
 
