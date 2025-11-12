@@ -3,70 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>첫 배포 축하! 🎉</title>
+    <title>🥳 생일을 축하합니다! 🥳</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
+        /* 기본 설정 및 폰트 */
         body {
-            font-family: 'Arial', sans-serif;
+            margin: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            background: linear-gradient(135deg, #f06, #4a00e0); /* 화려한 그라데이션 */
+            color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            margin: 0;
-            background-color: #f4f7f6; /* 밝은 배경 */
+            overflow: hidden; /* 스크롤바 숨기기 */
             text-align: center;
-        }
-        .container {
-            background-color: #ffffff;
-            padding: 40px 60px;
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 90%;
-            border-top: 5px solid #4CAF50; /* 포인트 색상 */
-        }
-        h1 {
-            color: #2c3e50;
-            font-size: 2.5em;
-            margin-bottom: 0.5em;
-        }
-        p {
-            color: #7f8c8d;
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-        .highlight {
-            color: #2ecc71;
-            font-weight: bold;
-        }
-        .icon {
-            font-size: 3em;
-            margin-bottom: 20px;
-            animation: pulse 1.5s infinite;
+            position: relative;
         }
 
-        /* 간단한 애니메이션 효과 */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        /* 배경 파티클 애니메이션 */
+        .confetti {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0; /* 배경으로 */
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--color);
+            opacity: 0;
+            animation: confetti-fall linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            100% {
+                transform: translateY(calc(100vh + 100px)) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* 컨테이너 */
+        .container {
+            background-color: rgba(0, 0, 0, 0.4); /* 반투명 배경 */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 90%;
+            width: 600px;
+            z-index: 1; /* 파티클 위로 */
+            position: relative;
+            animation: popIn 1s ease-out; /* 컨테이너 나타나는 애니메이션 */
+            border: 3px solid gold; /* 금색 테두리 */
+        }
+
+        @keyframes popIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* 제목 */
+        h1 {
+            font-family: 'Pacifico', cursive; /* 필기체 폰트 */
+            font-size: 3.5em; /* 반응형 조절 */
+            margin-bottom: 20px;
+            color: #ffeb3b; /* 밝은 노란색 */
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+            animation: bounceIn 1.5s ease-out; /* 통통 튀는 애니메이션 */
+            position: relative;
+            display: inline-block; /* 이모지 위치 조절 */
+        }
+
+        h1 .emoji {
+            font-size: 0.8em;
+            vertical-align: middle;
+            margin: 0 10px;
+            animation: rotateEmoji 2s infinite linear;
+        }
+
+        @keyframes rotateEmoji {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.1); opacity: 0; }
+            60% { transform: scale(1.2); opacity: 1; }
             100% { transform: scale(1); }
+        }
+
+        /* 이름 */
+        .name {
+            font-family: 'Pacifico', cursive;
+            font-size: 2.5em;
+            color: #00bcd4; /* 청록색 */
+            margin-bottom: 15px;
+            animation: slideInUp 1.2s ease-out forwards;
+            opacity: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        @keyframes slideInUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* 메시지 */
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            animation: fadeIn 2s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.8s; /* 지연 적용 */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* 날짜 */
+        .date {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ff4081; /* 핫핑크 */
+            animation: pulse 1.5s infinite alternate; /* 쿵쾅거리는 애니메이션 */
+        }
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+
+        /* 반응형 디자인 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .name {
+                font-size: 2em;
+            }
+            p {
+                font-size: 1em;
+            }
+            .date {
+                font-size: 1.2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            h1 .emoji {
+                font-size: 0.6em;
+                margin: 0 5px;
+            }
+            .name {
+                font-size: 1.5em;
+            }
+            p {
+                font-size: 0.9em;
+            }
+            .date {
+                font-size: 1em;
+            }
+            .container {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="icon">🚀</div>
-        <h1>배포 성공을 축하합니다!</h1>
+    <div class="confetti"></div> <div class="container">
+        <h1>
+            <span class="emoji">🎉</span>
+            생일 축하해요!
+            <span class="emoji">🎂</span>
+        </h1>
+        <div class="name">사랑하는 [생일 주인공 이름]님!</div>
         <p>
-            <span class="highlight">Django 프로젝트의 첫 번째 웹 페이지</span>가 성공적으로 로드되었습니다.<br>
-            개발 여정의 중요한 첫걸음을 내디딘 것을 진심으로 축하드립니다!
+            소중한 당신의 생일을 진심으로 축하합니다.<br>
+            오늘 하루 세상 그 누구보다 행복하고 즐거운 시간 보내세요.<br>
+            늘 건강하고 밝은 웃음 가득하시길 바랍니다!
         </p>
-        <p>
-            **"/users/roychoi/Documents/Github/django_learning/mysite"**
-            <br>이 경로에서 멋진 프로젝트가 시작됩니다.
-        </p>
-        <p style="margin-top: 30px; font-size: 0.9em;">
-            이제 <span class="highlight">**main/index.html**</span> 템플릿 파일을 원하는 대로 자유롭게 꾸며나가세요!
-        </p>
+        <div class="date">[YYYY년 MM월 DD일]</div>
     </div>
+
+    <script>
+        // 파티클 애니메이션 스크립트
+        const confettiContainer = document.querySelector('.confetti');
+        const colors = ['#f06', '#00bcd4', '#ffeb3b', '#ff4081', '#7b1fa2', '#4a00e0']; // 파티클 색상
+
+        function createConfettiPiece() {
+            const piece = document.createElement('div');
+            piece.classList.add('confetti-piece');
+            piece.style.left = Math.random() * 100 + 'vw'; // 화면 전체 너비
+            piece.style.animationDuration = Math.random() * 3 + 2 + 's'; // 2~5초
+            piece.style.animationDelay = Math.random() * 2 + 's'; // 0~2초 지연
+            piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confettiContainer.appendChild(piece);
+
+            // 화면을 벗어나면 제거하여 메모리 관리
+            piece.addEventListener('animationend', () => {
+                piece.remove();
+            });
+        }
+
+        // 일정 시간마다 파티클 생성
+        setInterval(createConfettiPiece, 100); // 0.1초마다 하나씩 생성
+
+        // 초기 로드 시 이름과 메시지 애니메이션 지연
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.name').style.animationDelay = '0.5s';
+            document.querySelector('p').style.animationDelay = '1s';
+            // 애니메이션 시작 (opacity 0에서 시작하도록 CSS에 설정되어 있음)
+            document.querySelector('.name').style.opacity = '1';
+            document.querySelector('p').style.opacity = '1';
+        });
+
+    </script>
 </body>
 </html>
