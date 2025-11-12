@@ -30,6 +30,7 @@ ALLOWED_HOSTS = [
     '.ap-northeast-2.compute.amazonaws.com',
     'devnote.store',
     '.devnote.store',
+    '3.34.53.194',
 ]
 
 
