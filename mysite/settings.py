@@ -31,6 +31,8 @@ ALLOWED_HOSTS = [
     'devnote.store',
     '.devnote.store',
     '3.34.53.194',
+    'localhost',
+    '127.0.0.1', 
 ]
 
 
